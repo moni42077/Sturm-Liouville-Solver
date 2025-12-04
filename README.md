@@ -6,7 +6,10 @@ $$-\frac{d}{dx}(p(x)u'(x))+r(x)u(x)=f(x) \qquad u(a)=A\quad u(b)=B$$
 
 by using the following three methods — FEM (Finite Element Method), SM (Spectral Method) and SEM (Spectral Element Method).
 ### Example Usage
- ```python 
+ ```python
+from finite_elem.equation import SturmLiouville
+import numpy as np
+
 def p(x):
    return -np.exp(-4*x)
 
