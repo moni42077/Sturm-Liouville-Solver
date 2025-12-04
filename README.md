@@ -4,7 +4,7 @@ This is the code for My MSc in Mathematics at the University of Leeds. It solved
 
 $$-\frac{d}{dx}(p(x)u'(x))+r(x)u(x)=f(x) \qquad u(a)=A\quad u(b)=B$$
 
-by using the following three methods — FEM (Finite Element Method), SM (Spectral Method) and SEM (Spectral Element Method).
+by using the following three methods — FEM (Finite Element Method), SM (Spectral Method) and SEM (Spectral Element Method). As well as the ability to solve eigenvalue problems, examples can be found for Airy's and Mathieu's equations as well as the harmonic oscillator equation and the Legendre equation.
 ### Example Usage
  ```python
 from finite_elem.equation import SturmLiouville
