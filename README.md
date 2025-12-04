@@ -1,5 +1,39 @@
 # Sturm-Liouville Equation Solver
+## Introduction
+This is the code for My MSc in Mathematics at the University of Leeds. It solved Sturm-Lioville equations of the form 
 
+$$-\frac{d}{dx}(p(x)u'(x))+r(x)u(x)=f(x) \qquad u(a)=A\quad u(b)=B$$
+
+by using the following three methods — FEM (Finite Element Method), SM (Spectral Method) and SEM (Spectral Element Method).
+### Example Usage
+ ```python 
+def p(x):
+   return -np.exp(-4*x)
+
+def p_prime(x):
+   return 4*np.exp(-4*x)
+
+def r(x):
+   return 4*np.exp(-4*x)
+
+def f(x):
+   c= -4 * np.e/(1+np.e**2)
+   return np.exp(-3*x)+c*np.exp(-4*x)
+
+a = 1
+b = 1
+# Number of elements
+N = 10
+
+#Polynomial Degree for SEM
+po = 2
+
+eq = SturmLiouville(p, r, f, a, b, N, p_prime=p_prime)
+us, xs = eq.sem(N,N=po) #N elements and polynomials of degree po
+us2, xs2 = eq.sm() #Assumes polynomial degree N
+us3, xs3 = eq.fem_stand()
+us4, xs4 = eq.fem_stand_quad()
+ ``` 
 ## Main file 
 A bit more cleaned up version of the main file for the BVP can be found in `main/equation.py`, the actual file used for calculations and plots is `finite_element/equation.py` - note it contains non-finished methods, only use the following functions given `eq=SturmLuioville()`
 - `eq.fem()` - finite element method with linear basis
@@ -22,9 +56,5 @@ The `test` folder contains a lot of the files that produce error plots such as `
 Due to the uniqueness of the Eigenvalue Problems every one has its own seperate file in `eigen`, which does all the calculations and typically produces the plots as well.
 
 The rest of the folders are not really important but here is a quick rundown 
-- `Chebyshev` - contains some test to make sure our differentiation matrix actually differentiates
-- `eps_plots` - contains most of the plots that have been produced
 - `finite_elem` - the main file is there as well as other element method files
-- `meetings` - notes for the weekly meetings I had with Jitse and Evy
 - `plots` - some helper files to make some more specific plots
-- `report` - the initial report was there
